@@ -8,21 +8,28 @@ public class AtracaoFestival {
     private int capacidadePublico;
     private int ingressosVendidos;
 
+    public AtracaoFestival() {
+        this.nome = "Atração sem nome";
+        this.horario = "00:00";
+        this.cache = 0.0;
+        this.valorIngresso = 0.0;
+        this.capacidadePublico = 0;
+        this.ingressosVendidos = 0;
+    }
+
     public AtracaoFestival(String nome, String horario, double cache,
                            double valorIngresso, int capacidadePublico) {
+        this();
         this.nome = nome;
         this.horario = horario;
         this.cache = cache;
         this.valorIngresso = valorIngresso;
         this.capacidadePublico = capacidadePublico;
-        this.ingressosVendidos = 0;
     }
 
     public boolean venderIngresso(int quantidade) {
         if (quantidade > 0 && this.ingressosVendidos + quantidade <= this.capacidadePublico) {
             this.ingressosVendidos += quantidade;
-            double valorVenda = this.valorIngresso * quantidade;
-            CaixaDoArraia.registrarVenda(valorVenda);
             return true;
         }
         return false;
@@ -42,13 +49,4 @@ public class AtracaoFestival {
     public double getValorIngresso() { return valorIngresso; }
     public int getCapacidadePublico() { return capacidadePublico; }
     public int getIngressosVendidos() { return ingressosVendidos; }
-
-    public void setNome(String nome) { this.nome = nome; }
-    public void setHorario(String horario) { this.horario = horario; }
-
-    public void setValorIngresso(double valorIngresso) {
-        if (valorIngresso > 0) {
-            this.valorIngresso = valorIngresso;
-        }
-    }
 }
