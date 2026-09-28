@@ -1,16 +1,14 @@
 package mercadinho;
 
 public class CaixaDoArraia {
-   private static double saldoGeral;
-   private static double TAXA_SERVICO;
+    private static double saldoGeral = 0.0;
+    private static final double TAXA_SERVICO = 0.05;
 
-   public static void registrarVenda(double valor)
-   {
-        saldoGeral += valor - TAXA_SERVICO;
-   }
-   public static double consultarSaldoGeral()
-   {
-    System.out.println(saldoGeral);
-    return saldoGeral;
-   }
+    public void registrarVenda(double valor) {
+        saldoGeral += valor - (valor * TAXA_SERVICO);
+    }
+
+    public static double consultarSaldoGeral() {
+        return saldoGeral;
+    }
 }
